@@ -1,0 +1,31 @@
+{% include 'top.html' %}
+
+<section>
+    <div align="center">
+        <h1> Board List </h1>
+        <table border="1" align="center">
+            <tr align="center">
+                <td> No. </td>
+                <td> Title </td>
+                <td> Content </td>
+                <td> Today </td>
+            </tr>
+
+            {% for board in board_list %}
+            <tr>
+                <td> {{board.id}} </td>
+                <td>
+                    <a href="{% url 'boardedit' board.pk%}">
+                    {{board.title}}
+                    </a>
+                </td>
+                <td> {{board.content}} </td>
+                <td> {{board.today}} </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</section>
+
+{% include 'bottom.html' %}

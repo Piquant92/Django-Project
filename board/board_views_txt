@@ -1,0 +1,71 @@
+from django.db import connection
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from board.models import Board
+
+# Create your views here.
+def board(request):
+    print(">>> board ")
+
+    board_list = Board.objects.all()
+
+    context={
+        "result":"Board",
+        "board_list":board_list,
+    }
+
+    return render(request, 'board_index.html', context)
+
+def board_form(request, ):
+    if request.method !='POST':
+        return  render(request, 'board_form.html')
+    else:
+        form = BoardForm(request.POST)
+        form.save()
+        '''
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        board = Board(title=title, content=content)
+        board.save()  # 데이터베이스에 저장
+        '''
+
+        return render(request, 'board_result.html')
+
+
+
+
+def boardcreate(request):
+    if request.method !='POST':
+        return render(request, 'boardcreate.html')
+    else:
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        board=Board(title=title, content=content)
+        board.save()
+
+    return render(request, 'boardcreatetrue.html')
+
+def boardedit(request,pk):
+    if request.method != 'POST':
+        print("===> board ")
+        board = get_object_or_404(Board, pk = pk)
+        context ={"board" : board }
+        return render(request, 'boardedit.html', context)
+    else:
+        print("===> Update (수정하기) ")
+        board = get_object_or_404(Board, pk=pk)
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        board.title = title
+        board.content = content
+        board.save()  # 데이터베이스에 수정하기
+        return redirect('board_list')
+
+
+
+def boarddel(request, pk):
+    print(">> 삭제")
+    board = get_object_or_404(Board, pk=pk)
+
+    board.delete()
+    return redirect('board_index.html')

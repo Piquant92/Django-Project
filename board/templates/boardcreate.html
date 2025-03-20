@@ -1,0 +1,29 @@
+{% include 'top.html' %}
+
+<section>
+    <div align="center">
+      <form method="POST">
+        {% csrf_token %}
+        <h1> Board Create </h1>
+        <table border="1" align="center">
+            <tr align="center">
+              <td>
+                제 &emsp; 목
+                <input type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                내 &emsp; 용
+                <input type="text">
+              </td>
+            </tr>
+          <tr align="center">
+              <td> <input type="submit" value="[글쓰기]"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+</section>
+
+{% include 'bottom.html' %}

@@ -1,0 +1,40 @@
+{% include 'top.html' %}
+
+<section>
+    <div align="center">
+      <form method="POST">
+        {% csrf_token %}
+        <h1> 게시판 상세보기 </h1>
+        <table border="1" align="center">
+            <tr align="center">
+              <td>
+                제 &emsp; 목
+                <input type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                내 &emsp; 용
+                <input type="text">
+              </td>
+            </tr>
+          <tr align="center">
+              <td> <input type="submit" value="수정하기"></td>
+          </tr>
+        </table>
+      </form>
+    <hr>
+        <a href="{% url 'boardsave' board.pk%}">
+        저장하기
+        </a>
+
+        <a href="{% url 'boardedit' board.pk%}">
+        목록보기
+        </a>
+
+        <a href="{% url 'boarddel' board.pk%}">
+        삭제하기 </a>
+    </div>
+</section>
+
+{% include 'bottom.html' %}
