@@ -1,3 +1,11 @@
+<h1> Django 이미지 분석 Project </h1>
+<h2> 작성자 정보 </h2>
+<h3> 
+    > 이름: Piquant<br>
+    > 번호: 010-9267-4420 <br>
+    > 주소: 서울시 동작구
+</h3>
+
 <h2> 영상을 보시려면 이미지를 클릭해 주세요! </h2> 
 
 [![유튜브 동영상](https://img.youtube.com/vi/cgz6o06AQPE/0.jpg)](https://www.youtube.com/watch?v=cgz6o06AQPE)
